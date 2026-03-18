@@ -77,3 +77,15 @@ ul > li {
   width: 80px;
   text-align: center;
 }
+
+a,
+a:active,
+a:hover,
+a:focus {
+  color: black;
+  text-decoration: none;
+}
+
+tr:hover {
+  background-color: yellow;
+}
