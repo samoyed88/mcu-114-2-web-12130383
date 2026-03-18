@@ -53,3 +53,8 @@ td.price {
 footer {
   margin-top: 20px;
 }
+
+section.body {
+  width: 90%;
+  margin: 0px auto;
+}
