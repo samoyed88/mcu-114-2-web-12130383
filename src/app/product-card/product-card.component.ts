@@ -11,9 +11,11 @@ export class ProductCardComponent {
   protected author = '作者甲、作者乙、作者丙';
   protected company = '博碩文化';
 
-  isShow = true;
+  protected isShow = true;
 
-  onSetDisplay(isShow: boolean): void {
+  protected onSetDisplay(isShow: boolean): void {
     this.isShow = isShow;
   }
+
+  protected photoUrl = 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img';
 }
