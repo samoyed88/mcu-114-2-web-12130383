@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, numberAttribute, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, model, numberAttribute, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
@@ -9,34 +9,23 @@ import { Component, EventEmitter, Input, numberAttribute, Output } from '@angula
   host: { class: 'app-product-card' },
 })
 export class ProductCardComponent {
-  @Output()
-  isShowChange = new EventEmitter<boolean>();
+  readonly id = input.required<number, string | number>({ transform: numberAttribute });
 
-  @Input({ required: true, transform: numberAttribute })
-  id!: number;
+  readonly productName = input<string>();
 
-  @Input()
-  productName!: string;
+  readonly authors = input<string[]>();
 
-  @Input()
-  authors!: string[];
+  readonly company = input<string>();
 
-  @Input()
-  company!: string;
+  readonly isShow = model.required<boolean>();
 
-  @Input()
-  isShow!: boolean;
+  readonly photoUrl = input<string>();
 
-  @Input()
-  photoUrl!: string;
+  readonly createDate = input<Date>();
 
-  @Input()
-  createDate!: Date;
+  readonly price = input<number, string | number>(0, { transform: numberAttribute });
 
-  @Input({ transform: numberAttribute })
-  price!: number;
-
-  protected onSetDisplay(isShow: boolean): void {
-    this.isShowChange.emit(isShow);
+  onSetDisplay(isShow: boolean): void {
+    this.isShow.set(isShow);
   }
 }
