@@ -1,5 +1,5 @@
 import { PaginationComponent } from './../pagination/pagination.component';
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { Router } from '@angular/router';
@@ -47,9 +47,10 @@ export class ProductPageComponent {
   }
 
   private getProducts(pageIndex: number, pageSize: number): void {
-    const { data, count } = this.productService.getList(undefined, pageIndex, pageSize);
-    this.products.set(data);
-    this.totalCount.set(count);
+    this.productService.getList(undefined, pageIndex, pageSize).subscribe(({ data, count }) => {
+      this.products.set(data);
+      this.totalCount.set(count);
+    });
   }
 
   protected onAdd(): void {
